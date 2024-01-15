@@ -1,5 +1,5 @@
 {
-  "name": "nextauth-test",
+  "name": "express-next-auth",
   "version": "0.1.0",
   "private": true,
   "scripts": {
