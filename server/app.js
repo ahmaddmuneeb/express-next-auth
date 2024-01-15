@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const session = require("express-session");
+const cors = require("cors");
 // modules import
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
@@ -27,6 +28,23 @@ app.use(
   routeLogger
 );
 // app.use functions
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001"],
+  })
+);
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Author≈ization"],
+  })
+);
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
